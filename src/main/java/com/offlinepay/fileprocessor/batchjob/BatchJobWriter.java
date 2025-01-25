@@ -14,10 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class BatchJobWriter implements ItemWriter<OfflinePayChild> {
     @Autowired
     OfflinePayChildRepo offlinePayChildRepo;
+    @Autowired
+    CommonUtils commonUtils;
 
     @Override
     public void write(Chunk<? extends OfflinePayChild> chunk) throws Exception {
         offlinePayChildRepo.saveAll(chunk);
-        log.info("child records inserted: {}", CommonUtils.objToJson(chunk.getItems()));
+        log.info("child records inserted: {}", commonUtils.objToJson(chunk.getItems()));
     }
 }

@@ -22,6 +22,8 @@ public class FileProcessorServiceImpl implements FileProcessorService {
     @Autowired
     OfflinePayParentRepo offlinePayParentRepo;
     @Autowired
+    CommonUtils commonUtils;
+    @Autowired
     Job job;
     @Autowired
     JobLauncher jobLauncher;
@@ -39,7 +41,7 @@ public class FileProcessorServiceImpl implements FileProcessorService {
                     parentEntity.setStage("file processing");
                     parentEntity.setStatus("new");
                     OfflinePayParent savedParentEntity = offlinePayParentRepo.saveAndFlush(parentEntity);
-                    log.info("saved parent entity: {}", CommonUtils.objToJson(savedParentEntity));
+                    log.info("saved parent entity: {}", commonUtils.objToJson(savedParentEntity));
                     JobParameters jobParameters = new JobParametersBuilder().addLong("launch_time", System.currentTimeMillis()).addString("filename", blobItem.getName()).toJobParameters();
                     jobLauncher.run(job, jobParameters);
                 }

@@ -19,4 +19,9 @@ public interface OfflinePayParentRepo extends JpaRepository<OfflinePayParent, Bi
     @Modifying
     @Query(value = "update offlinepay_parent set total_records=?1,total_amount=?2,status=?3 where id=?4", nativeQuery = true)
     void updateRecord(BigInteger totalRecords, BigDecimal totalAmount, String completed, BigInteger id);
+
+    @Transactional
+    @Modifying
+    @Query(value = "update offlinepay_parent set error_id=?1 where filename=?2", nativeQuery = true)
+    void updateError(BigInteger errorId, String filename);
 }
