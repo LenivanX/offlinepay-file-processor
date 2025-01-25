@@ -16,6 +16,7 @@ public class Controller {
 
     @GetMapping("invoke")
     public String invoke() {
+        log.info("started offline-pay file processing");
         service.process();
         return "started";
     }

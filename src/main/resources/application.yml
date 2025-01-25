@@ -10,8 +10,8 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 logging:
   pattern:
-    console: "[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] %c : %m%n"
+    console: "[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%c] %m%n"
   level:
     root: ERROR
-    org.springframework: INFO
+    org.springframework: ERROR
     com.offlinepay.fileprocessor: DEBUG

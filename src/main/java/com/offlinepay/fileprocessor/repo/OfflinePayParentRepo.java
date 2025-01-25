@@ -9,10 +9,11 @@ import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Optional;
 
 @Repository
 public interface OfflinePayParentRepo extends JpaRepository<OfflinePayParent, BigInteger> {
-    OfflinePayParent findByFilename(String filename);
+    Optional<OfflinePayParent> findByFilename(String filename);
 
     @Transactional
     @Modifying

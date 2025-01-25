@@ -1,6 +1,7 @@
 package com.offlinepay.fileprocessor.batchjob;
 
 import com.offlinepay.fileprocessor.entity.OfflinePayChild;
+import com.offlinepay.fileprocessor.utils.CommonUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.ItemProcessor;
@@ -30,6 +31,7 @@ public class BatchJobProcessor implements ItemProcessor<FieldSet, OfflinePayChil
         offlinePayChild.setTransactionDate(transactionDate);
         BatchJobListener.incrementTotalRecords(BigInteger.ONE);
         BatchJobListener.incrementTotalAmount(amount);
+        log.info("child entity mapped to be added: {}", CommonUtils.objToJson(offlinePayChild));
         return offlinePayChild;
     }
 }
