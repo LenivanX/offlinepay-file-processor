@@ -1,0 +1,19 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: fileprocessor
+  datasource:
+    url: jdbc:mysql://localhost:3306/devtest
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: false
+logging:
+  pattern:
+    console: "[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%c] %m%n"
+  level:
+    root: ERROR
+    org.springframework: ERROR
+    com.offlinepay.fileprocessor: DEBUG
